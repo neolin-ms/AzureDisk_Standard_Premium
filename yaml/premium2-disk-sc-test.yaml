@@ -1,0 +1,19 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"allowVolumeExpansion":true,"apiVersion":"storage.k8s.io/v1","kind":"StorageClass","metadata":{"annotations":{},"creationTimestamp":"2023-12-09T04:47:57Z","name":"premium2-disk-sc","resourceVersion":"109150680","uid":"7f09bb4a-ca34-4533-95fc-36c9e733c68f"},"parameters":{"DiskIOPSReadWrite":"4000","DiskMBpsReadWrite":"1000","cachingMode":"None","skuName":"PremiumV2_LRS"},"provisioner":"disk.csi.azure.com","reclaimPolicy":"Delete","volumeBindingMode":"WaitForFirstConsumer"}
+  creationTimestamp: "2024-02-02T08:50:02Z"
+  name: premium2-disk-sc
+  resourceVersion: "10444106"
+  uid: 89888aef-7164-4f00-9648-d9ca51ef1b64
+parameters:
+  DiskIOPSReadWrite: "4000"
+  DiskMBpsReadWrite: "1000"
+  cachingMode: None
+  skuName: PremiumV2_LRS
+provisioner: disk.csi.azure.com
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
