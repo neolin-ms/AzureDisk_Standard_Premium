@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: disk.csi.azure.com
+  name: lab-0
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: managed-csi-premium-v2
+  csi:
+    driver: disk.csi.azure.com
+    volumeHandle: /subscriptions/60796668-979e-4d0a-b3cd-74f9e7dba880/resourceGroups/MC_eastusResourceGroup_eastusCluster_eastus/providers/Microsoft.Compute/disks/lab-0
+    volumeAttributes:
+      fsType: ext4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: topology.disk.csi.azure.com/zone
+          operator: In
+          values:
+          - eastus-1
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: disk.csi.azure.com
+  name: lab-1
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: managed-csi-premium-v2
+  csi:
+    driver: disk.csi.azure.com
+    volumeHandle: /subscriptions/60796668-979e-4d0a-b3cd-74f9e7dba880/resourceGroups/MC_eastusResourceGroup_eastusCluster_eastus/providers/Microsoft.Compute/disks/lab-1
+    volumeAttributes:
+      fsType: ext4
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: topology.disk.csi.azure.com/zone
+          operator: In
+          values:
+          - eastus-2
